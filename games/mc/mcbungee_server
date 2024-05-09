@@ -1,0 +1,18 @@
+[Unit]
+Description=bungee-mc-server
+After=network.target
+[Service]
+User=owen
+Nice=1
+# KillMode=none
+SuccessExitStatus=0 1
+# ProtectHome=true
+# ProtectSystem=full
+# PrivateDevices=true
+NoNewPrivileges=true
+# path to directory
+WorkingDirectory=/home/owen/MCServer/OMS2.0SpigotBungee/Bungee
+ExecStart=/usr/bin/java -Xmx512M -Xms512M -jar BungeeCord.jar
+# ExecStop=/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p strong-password stop
+[Install]
+WantedBy=multi-user.target

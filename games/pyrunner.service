@@ -1,0 +1,40 @@
+[Unit]
+# Description of the service
+Description=clash-royale-last-activity-tracker-for-owen
+
+# Launch after network is working
+After=network.target
+
+[Service]
+# Launches it as the user owen so it does not launch as root causing security issues
+User=owen
+
+# Nice value of one, this is basically the priority. Nice values can be seen through htop
+Nice=1
+
+# IGNORE, turning this on will make it so the servers cannot be stopped even when the service stops.
+# KillMode=none
+
+# IDK
+SuccessExitStatus=0 1
+
+# IGNORE
+# ProtectHome=true
+# ProtectSystem=full
+# PrivateDevices=true
+
+# IDK
+NoNewPrivileges=true
+
+# The directory that it works in. It runs the commands and everything in this directory
+WorkingDirectory=/home/owen/CRTrack/Owen
+
+# Command to run when the service starts. Needs an absolute path.
+ExecStart=/usr/bin/python3 /home/owen/CRTrack/Owen/main.py
+
+# IGNORE, command that runs when the service ends, this is using rcon to stop the server which I am too lazy to set up rn
+# ExecStop=/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p strong-password stop
+
+[Install]
+# IDK
+WantedBy=multi-user.target

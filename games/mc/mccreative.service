@@ -1,0 +1,16 @@
+[Unit]
+Description=creative-mc-server
+After=network.target
+
+[Service]
+User=owen
+Nice=1
+SuccessExitStatus=0 1
+NoNewPrivileges=true
+# path to directory containing jar file
+WorkingDirectory=/home/owen/MCServer/OMS2.0SpigotBungee/Creative_World
+# can change amt of memory or server name. also ensure java is installed obviously
+ExecStart=/usr/bin/java -Xmx2048M -Xms1024M -jar server.jar nogui
+
+[Install]
+WantedBy=multi-user.target
